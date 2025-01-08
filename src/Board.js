@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
+const Container = styled.div`
+    margin-left: 30px;
+`;
+
 const Table = styled.table`
     border-collapse: collapse;
-    text-align: center;
-    margin: 30px;
 `;
 
 const TableCell = styled.td`
@@ -11,7 +13,7 @@ const TableCell = styled.td`
     width: 30px;
     height: 30px;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: center;
     font-size: 20px;
     font-weight: bold;
     &:hover {
@@ -21,16 +23,18 @@ const TableCell = styled.td`
 
 export const Board = ({boardState,GameProgress}) => {
     return (
-        <Table>
-            <tbody>
-                {boardState.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                        {row.map((cell, colIndex) => (
-                            <TableCell key={colIndex} onClick={()=>GameProgress(rowIndex,colIndex)} cell={cell}>{cell}</TableCell>
-                        ))}
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
+        <Container>
+            <Table>
+                <tbody>
+                    {boardState.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {row.map((cell, colIndex) => (
+                                <TableCell key={colIndex} onClick={()=>GameProgress(rowIndex,colIndex)} cell={cell}>{cell}</TableCell>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+        </Container>
     );
 }
